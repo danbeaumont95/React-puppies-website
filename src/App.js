@@ -2,6 +2,9 @@ import "./App.css";
 import React from 'react';
 import Title from './Components/Title'
 import PuppyList from './Components/PuppyList'
+import KittenList from './Components/KittenList'
+import TC from '/home/danbeaumont95/Documents/NorthCoders/Week-9-Front-end/Day-3/Code/react-intro/src/TC.jpg'
+import Benny from '/home/danbeaumont95/Documents/NorthCoders/Week-9-Front-end/Day-3/Code/react-intro/src/Benny.jpg'
 
 //render everything onto page (DOM)
 //click => boolean
@@ -36,7 +39,20 @@ class App extends React.Component {
       cuteness: 8,
   },
 ],
+kittens: [
+  {
+    name: 'TC',
+    img: TC,
+    cuteness: 10,
+  },
+  {
+    name: 'Benny',
+    img: Benny,
+    cuteness: 10,
+  },
+],
 puppiesAreVisible: true,
+kittensAreVisible: true,
 user: 'Dan',
   };
   render() {
@@ -47,14 +63,14 @@ user: 'Dan',
         <br></br>
         <br></br>
         <button onClick={this.handleClick}>toggle puppies</button>
+        <button onClick={this.handleKitties}>Toggle kitties</button>
 
         <PuppyList puppies={this.state.puppies} puppiesAreVisible={this.state.puppiesAreVisible} />
+        <KittenList kittens={this.state.kittens} kittensAreVisible={this.state.kittensAreVisible} />
       </div>
     );
   }
 handleClick = () => {
-  //directly mutating state is bad!
-  //this.state.puppiesAreVisible = !this.state.puppiesAreVisible;
 
   this.setState((currentState) => {
     return {puppiesAreVisible: !currentState.puppiesAreVisible}
@@ -63,6 +79,11 @@ handleClick = () => {
 handleConsole = () => {
   this.setState((currentState) => {
     console.log(`Hi ${this.state.user}`)
+  })
+}
+handleKitties = () => {
+  this.setState((currentState) => {
+    return {kittensAreVisible: !currentState.kittensAreVisible}
   })
 }
 
