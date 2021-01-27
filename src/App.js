@@ -43,7 +43,11 @@ user: 'Dan',
     return (
       <div className="App">
         <Title user={this.state.user} />
+        <button onClick={this.handleConsole}>Click here!</button>
+        <br></br>
+        <br></br>
         <button onClick={this.handleClick}>toggle puppies</button>
+
         <PuppyList puppies={this.state.puppies} puppiesAreVisible={this.state.puppiesAreVisible} />
       </div>
     );
@@ -56,6 +60,11 @@ handleClick = () => {
     return {puppiesAreVisible: !currentState.puppiesAreVisible}
   })
 };
+handleConsole = () => {
+  this.setState((currentState) => {
+    console.log(`Hi ${this.state.user}`)
+  })
+}
 
 }
 
